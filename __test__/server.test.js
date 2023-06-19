@@ -26,6 +26,7 @@ describe('server testing',()=>{
             "password" : "1223"
         })
         expect(responce.status).toBe(500)
+        expect(responce.body['error massege']).toBe("Invalid Login : wrong password")
     })
     test('POST to /signin to login with wrong username (use basic auth)',async()=>{
         const responce = await request.post('/signin').send({
@@ -33,10 +34,11 @@ describe('server testing',()=>{
             "password" : "123"
         })
         expect(responce.status).toBe(500)
+        expect(responce.body['error massege']).toBe("Invalid Login : this user is not exist")
     })
-
-
 })
+
+
 afterAll(async () => {
     await db.drop();
 });
