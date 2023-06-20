@@ -46,6 +46,7 @@ async delete(id){
         return record
     }
 async signin(coded){
+        console.log(coded)
         let splitted = coded.split(' ')
         let code = splitted.pop()
         let uncoded = base64.decode(code)
