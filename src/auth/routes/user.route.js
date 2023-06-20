@@ -28,8 +28,8 @@ async function adduser(req,res){
 };
 
 async function siginUser(req,res){
-    let coded =  base64.encode(`${req.body.username}:${req.body.password}`)
-    const URL = await userModel.signin(coded)
+    // let coded =  base64.encode(`${req.body.username}:${req.body.password}`)
+    const URL = await userModel.signin(req.headers.authorization)
     res.status(200).json(URL)
 }
 
